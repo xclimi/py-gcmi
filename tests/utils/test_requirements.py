@@ -1,6 +1,10 @@
-from gcmi.utils.requirements import (Requirement, RequirementError,
-                                     get_requirements, requires,
-                                     validate_requirements)
+from gcmi.utils.requirements import (
+    Requirement,
+    RequirementError,
+    get_requirements,
+    requires,
+    validate_requirements,
+)
 
 
 def test_validate_requirements_ok_and_types_and_predicate():

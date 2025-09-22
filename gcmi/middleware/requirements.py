@@ -25,8 +25,12 @@ from __future__ import annotations
 
 from typing import Any, Callable, Dict, Mapping, Sequence, Tuple
 
-from gcmi.utils.requirements import (Requirement, RequirementError,
-                                     get_requirements, validate_requirements)
+from gcmi.utils.requirements import (
+    Requirement,
+    RequirementError,
+    get_requirements,
+    validate_requirements,
+)
 
 # Loose typing to avoid import-cycle with core types
 StepFn = Callable[

@@ -7,7 +7,9 @@ name = "py-gcmi"
 version = "0.1.0"
 description = "The Python general circulation model interface"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "numpy>=2.2.6",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -20,3 +22,8 @@ dev = [
 [tool.setuptools.packages.find]
 include = ["gcmi*", "pygcmi*"]
 exclude = ["ideas*", "projects*", "docs*", "tests*"]
+
+[tool.pytest.ini_options]
+# Restrict test discovery to our first-party tests only (exclude vendor scripts)
+testpaths = ["tests"]
+addopts = "-q"

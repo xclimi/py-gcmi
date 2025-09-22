@@ -1,16 +1,30 @@
-from typing import Protocol, Mapping, Any, Tuple, Callable, Dict
+from typing import Any, Callable, Dict, Mapping, Protocol, Tuple
+
 
 class ArrayLike(Protocol): ...
+
+
 class XP(Protocol): ...
+
 
 State = Dict[str, ArrayLike]
 Forcing = Dict[str, ArrayLike]
 Params = Mapping[str, Any]
-Diag   = Dict[str, Any]
+Diag = Dict[str, Any]
 
 StepFn = Callable[[State, Forcing, Params, float], Tuple[State, Diag]]
 
+
 def init_fn(cfg: Mapping[str, Any], *, xp: XP) -> Tuple[State, Params]: ...
-def step_fn(state: State, forcing: Forcing, params: Params, dt: float, *, xp: XP) -> Tuple[State, Diag]: ...
-def run_fn(init: State, params: Params, forcing_stream, *,
-           xp: XP, nsteps: int, hooks: Tuple[Callable[[int, State, Diag], None], ...] = ()) -> Tuple[State, Mapping[str, Any]]: ...
+def step_fn(
+    state: State, forcing: Forcing, params: Params, dt: float, *, xp: XP
+) -> Tuple[State, Diag]: ...
+def run_fn(
+    init: State,
+    params: Params,
+    forcing_stream,
+    *,
+    xp: XP,
+    n_steps: int,
+    hooks: Tuple[Callable[[int, State, Diag], None], ...] = (),
+) -> Tuple[State, Mapping[str, Any]]: ...
